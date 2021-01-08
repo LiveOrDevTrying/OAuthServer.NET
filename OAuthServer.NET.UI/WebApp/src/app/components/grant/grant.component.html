@@ -1,0 +1,35 @@
+<mat-card class="grant-card">
+    <mat-card-title>
+        <p class="mat-h1" *ngIf="id && id !== ''">Edit Grant</p>
+        <p class="mat-h1" *ngIf="!id || id === ''">Create Grant</p>
+    </mat-card-title>
+        
+    <mat-card-content>
+        <div class="flex-vertical-container">
+            <mat-form-field>
+                <input matInput class="form-control" id="grantName" placeholder="Grant Name" name="grantName"
+                [(ngModel)]="grantName" required />
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput class="form-control" id="authorizeResponseType" placeholder="Authorization Response Type" name="authorizeResponseType"
+                [(ngModel)]="authorizeResponseType" />
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput class="form-control" id="tokenGrantType" placeholder="Token Grant Type" name="tokenGrantType"
+                [(ngModel)]="tokenGrantType" />
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-stroked-button color="primary" appearance="outlined" [routerLink]="['/grants']">
+            Back
+        </button>
+        <button mat-raised-button color="primary" appearance="raised" (click)="createGrant()">
+            Create
+        </button>
+    </mat-card-actions>
+
+</mat-card>

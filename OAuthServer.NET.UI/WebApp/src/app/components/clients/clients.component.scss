@@ -1,0 +1,12 @@
+.mat-column-clientName,
+.mat-column-grantType,
+.mat-column-clientId,
+.mat-column-countPostLogoutRedirectURIs,
+.mat-colume-countRedirectURIs {
+    padding: 0px 5px 0px 5px;
+}
+
+.client-card {
+    display: flex;
+    flex-direction: column;
+}

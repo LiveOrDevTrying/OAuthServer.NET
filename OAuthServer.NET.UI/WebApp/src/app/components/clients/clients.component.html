@@ -1,0 +1,61 @@
+<mat-card class="client-card">
+    <p class="mat-h1">Clients</p>
+
+    <div class="form-group">
+        <button mat-primary color="primary" type="button" id="back" mat-raised-button (click)="createClient()">
+            Create Client
+        </button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="clientName">
+            <th mat-header-cell *matHeaderCellDef>Client Name</th>
+            <td mat-cell *matCellDef="let element">
+                <a (click)="navigateToClient(element.id)" routerLink="">
+                    {{ element.clientName }}
+                </a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="grantType">
+            <th mat-header-cell *matHeaderCellDef>Grant Type</th>
+            <td mat-cell *matCellDef="let element">
+                {{ getGrant(element.grantId).grantName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="clientId">
+            <th mat-header-cell *matHeaderCellDef>clientId</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.clientId }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="countPostLogoutRedirectURIs">
+            <th mat-header-cell *matHeaderCellDef>Count Post Logout Redirect URIs</th>
+            <td mat-cell *matCellDef="let element">
+                {{ getClientsPostLogoutRedirectURIs(element.id).length }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="countRedirectURIs">
+            <th mat-header-cell *matHeaderCellDef>Count Redirect URIs</th>
+            <td mat-cell *matCellDef="let element">
+                {{  getClientsRedirectURIs(element.id).length }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="removeClient">
+            <th mat-header-cell *matHeaderCellDef>Remove</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-primary color="primary" type="button" mat-stroked-button (click)="removeClient(element.id)">
+                    Remove
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</mat-card>

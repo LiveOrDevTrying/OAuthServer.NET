@@ -1,0 +1,15 @@
+<div class="mobile-nav-container">
+  <span *ngIf="isAuthenticated">
+    <button mat-button class="navbar_element" [routerLink]="['/']">
+      Clients
+    </button>
+    <button mat-button class="navbar-element" [routerLink]="['/grants']">
+      Grants
+    </button>
+    <button mat-button class="navbar-element" [routerLink]="['/logout']">
+      Logout
+    </button>
+  </span>
+</div>
+
+<router-outlet></router-outlet>

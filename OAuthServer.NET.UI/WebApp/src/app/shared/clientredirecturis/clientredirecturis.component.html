@@ -1,0 +1,36 @@
+<p class="mat-h2">Client Redirect URIs</p>
+
+<button mat-stroked-button color="primary" appearance="outlined" (click)="addRedirectURI()">
+    Add Redirect URI
+</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="redirectURI">
+        <th mat-header-cell *matHeaderCellDef>Redirect URI</th>
+        <td mat-cell *matCellDef="let element">
+            {{ element.redirectURI }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editRedirectURI">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-primary color="primary" type="button" mat-stroked-button (click)="editRedirectURI(element.redirectURI)">
+                Edit
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deleteRedirectURI">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-primary color="primary" type="button" mat-stroked-button (click)="deleteRedirectURI(element.redirectURI)">
+                Delete
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

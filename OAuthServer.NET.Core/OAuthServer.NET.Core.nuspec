@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Rob Engel - LiveOrDevTrying</authors>
+    <owners>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</owners>
+	<license type="expression">MIT</license>
+	<projectUrl>https://github.com/liveordevtrying/oauthserver.net</projectUrl>
+	<icon>Logo.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>OAuthServer.NET is a simple yet scalable OAuth 2.0 provider for the 4 standard types of OAuth 2.0 as well as custom grants. OAuthServer.NET supports implicit, authorization code, resource owner password, and client credentials as well as 3rd party logins. OAuthServer.NET is integrated with the Asp.NET Identity system and includes the ability for full managemant of accounts. OAuthServer.NET includes a UI (created in Angular) for easily setting up and configuring clients. OAuthServer.NET is easily deployed through Docker, NuGet, or can be modified directly from the source https://github.com/liveordevtrying/oauthserver.net. OAuthServer.NET is dependent on SQL server, Entity Framework, and the Asp.NET Identity System.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2021</copyright>
+    <tags>OAuth OAuthServer OAuthServer.NET OAuth 2.0 Identity 3rd Party Authorization Authentication IdentityServer4 IdentityServer3 Provider tokens refresh access authorization authentication server liveordevtrying pixel horror studios pixelhorrorstudios</tags>
+    <dependencies>
+		<group targetFramework="netstandard2.1">
+			<dependency id="JWTs" version="1.0.2" />
+			<dependency id="Microsoft.AspNetCore.Http.Abstractions" version="2.2" />
+			<dependency id="Microsoft.AspNetCore.Identity.EntityFrameworkCore" version="5.0.1" />
+			<dependency id="Microsoft.EntityFrameworkCore" version="5.0.1" />
+			<dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="5.0.1" />
+			<dependency id="System.Text.Json" version="5.0" />
+		</group>
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="Logo.png" target="" />
+  </files>
+</package>

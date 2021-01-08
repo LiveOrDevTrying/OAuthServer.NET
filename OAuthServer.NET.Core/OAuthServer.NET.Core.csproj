@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <Authors>Rob Engel - LiveOrDevTrying</Authors>
+    <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
+    <Description>OAuthServer.NET is a simple yet scalable OAuth 2.0 provider for the 4 standard types of OAuth 2.0 as well as custom grants. OAuthServer.NET supports implicit, authorization code, resource owner password, and client credentials as well as 3rd party logins. OAuthServer.NET is integrated with the Asp.NET Identity system and includes the ability for full managemant of accounts. OAuthServer.NET includes a UI (created in Angular) for easily setting up and configuring clients. OAuthServer.NET is easily deployed through Docker, NuGet, or can be modified directly from the source https://github.com/liveordevtrying/oauthserver.net. OAuthServer.NET is dependent on SQL server, Entity Framework, and the Asp.NET Identity System.</Description>
+    <Copyright>Copyright 2021</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/liveordevtrying/oauthserver.net</PackageProjectUrl>
+    <PackageIcon>Logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/liveordevtrying/oauthserver.net</RepositoryUrl>
+    <RepositoryType>GitHub Public</RepositoryType>
+    <PackageTags>OAuth OAuthServer OAuthServer.NET OAuth 2.0 Identity 3rd Party Authorization Authentication IdentityServer4 IdentityServer3 Provider tokens refresh access authorization authentication server liveordevtrying pixel horror studios pixelhorrorstudios</PackageTags>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JWTs" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.1" />
+    <PackageReference Include="System.Text.Json" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>

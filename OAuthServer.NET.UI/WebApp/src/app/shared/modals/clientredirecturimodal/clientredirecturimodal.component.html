@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+    <p class="mat-h1" *ngIf="isCreate">Create a Client Redirect URI</p>
+    <p class="mat-h1" *ngIf="!isCreate">Edit a Client Redirect URI</p>
+</div>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput class="form-control" id="redirectURI" placeholder="Redirect URI" name="redirectURI"
+            [(ngModel)]="redirectURI" required/>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button color="primary" appearance="outlined" (click)="onNoClick()">
+        Back
+    </button>
+    <button mat-raised-button color="primary" appearance="raised" (click)="onSaveClick()" [disabled]="!isValidForSave" >
+        Save
+    </button>
+</div>

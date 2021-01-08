@@ -1,0 +1,53 @@
+<mat-card class="grants-card">
+    <p class="mat-h1">Grants</p>
+
+    <div class="form-group">
+        <button mat-primary color="primary" type="button" id="back" mat-raised-button [routerLink]="['/grant']">
+            Create New Grant
+        </button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="grantName">
+            <th mat-header-cell *matHeaderCellDef>Grant Name</th>
+            <td mat-cell *matCellDef="let element">
+                <a [routerLink]="['/grant', element.id]">
+                    {{ element.grantName }}
+                </a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="authorizeResponseType">
+            <th mat-header-cell *matHeaderCellDef>Authorization Response Type</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.authorizeResponseType }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tokenGrantType">
+            <th mat-header-cell *matHeaderCellDef>Token Grant Type</th>
+            <td mat-cell *matCellDef="let element">
+                {{ element.tokenGrantType }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="numClientApplications">
+            <th mat-header-cell *matHeaderCellDef>Number Clients</th>
+            <td mat-cell *matCellDef="let element">
+                {{ getNumberClientApplications(element.id) }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="removeGrant">
+            <th mat-header-cell *matHeaderCellDef>Remove</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-primary color="primary" type="button" mat-stroked-button (click)="removeGrant(element.id)">
+                    Remove
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</mat-card>

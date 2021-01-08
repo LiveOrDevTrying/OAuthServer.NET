@@ -1,0 +1,168 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model LoginVM
+<div id="particles-js"></div>
+<div class="container">
+    <div class="login-page">
+        @if (Model.EnableLocalLogin && Model.VisibleExternalProviders.Length > 0)
+        {
+            <div class="page-header">
+                <div class="panel">
+                    <h1>
+                        Login to @Model.ClientName
+                    </h1>
+                </div>
+            </div>
+        }
+        @if (!Model.EnableLocalLogin || Model.VisibleExternalProviders.Length == 0)
+        {
+            <div class="page-header row justify-content-center">
+                <div class="panel">
+                    <h1>
+                        Login to @Model.ClientName
+                    </h1>
+                </div>
+            </div>
+        }
+        <div class="row justify-content-center">
+            @if (Model.EnableLocalLogin)
+            {
+                <div class="col-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Local Login</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form asp-route="Login">
+                                <input type="hidden" asp-for="Parameters" />
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label asp-for="Username"></label>
+                                        <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
+                                    </div>
+                                    @if (Model.AllowRememberLogin)
+                                    {
+                                        <div class="form-group login-remember">
+                                            <label asp-for="RememberLogin">
+                                                <input asp-for="RememberLogin">
+                                                <strong>Keep Me Signed In</strong>
+                                            </label>
+                                        </div>
+                                    }
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" name="button" value="login">Login</button>
+                                        <button class="btn btn-default" name="button" value="cancel">Cancel</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.VisibleExternalProviders.Any())
+            {
+                <div class="col-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Login Providers</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-inline">
+                                @foreach (var provider in Model.VisibleExternalProviders)
+                                {
+                                <li class="list-inline-item">
+                                    @if (Model.Show3rdPartyLoginGraphics)
+                                    {
+                                        @if (provider.AuthenticationScheme == "Twitch")
+                                        {
+                                            <a asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                <img src="https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/The+Monitaur/Identity/LoginTwitch.png" class="img-responsive" />
+                                            </a>
+                                        }
+                                        else if (provider.AuthenticationScheme == "Google")
+                                        {
+                                            <a asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                <img src="https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/The+Monitaur/Identity/LoginGoogle.png" class="img-responsive" />
+                                            </a>
+                                        }
+                                        else if (provider.AuthenticationScheme == "Discord")
+                                        {
+                                            <a asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                <img src="https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/The+Monitaur/Identity/LoginDiscord.png" class="img-responsive" />
+                                            </a>
+                                        }
+                                        else if (provider.AuthenticationScheme == "Microsoft")
+                                        {
+                                            <a asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                <img src="https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/The+Monitaur/Identity/LoginMicrosoft.png" class="img-responsive" />
+                                            </a>
+                                        }
+                                        else if (provider.AuthenticationScheme == "Facebook")
+                                        {
+                                            <a asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                <img src="https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/The+Monitaur/Identity/LoginFacebook.png" class="img-responsive" />
+                                            </a>
+                                        }
+                                        else if (provider.AuthenticationScheme == "Twitter")
+                                        {
+                                            <a asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                <img src="https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/The+Monitaur/Identity/LoginTwitter.png" class="img-responsive" />
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-primary"
+                                               asp-action="ExternalLogin"
+                                               asp-route-provider="@provider.AuthenticationScheme"
+                                               asp-route-returnUrl="@Model.Parameters">
+                                                @provider.DisplayName
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary"
+                                           asp-action="ExternalLogin"
+                                           asp-route-provider="@provider.AuthenticationScheme"
+                                           asp-route-returnUrl="@Model.Parameters">
+                                            @provider.DisplayName
+                                        </a>
+                                    }
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>Invalid login request</strong>
+                There are no login schemes configured for this client.
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+}

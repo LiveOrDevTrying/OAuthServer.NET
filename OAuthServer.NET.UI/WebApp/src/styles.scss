@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.flex-vertical-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px 5px 5px;
+    flex: 0 1;
+}
+
+.flex-horizontal-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px 5px 5px 5px;
+    flex: 0 1;
+}
+
+.padding-basic {
+    padding: 10px 10px 10px 10px;
+}

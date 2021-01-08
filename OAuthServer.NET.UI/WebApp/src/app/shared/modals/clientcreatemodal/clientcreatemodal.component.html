@@ -1,0 +1,20 @@
+<div mat-dialog-title>
+    <p class="mat-h1">Create a Client</p>
+</div>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-select [(ngModel)]="grantId" cdkFocusInitial>
+            <mat-option *ngFor="let grant of grants" [value]="grant.id">
+                {{ grant.grantName }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button color="primary" appearance="outlined" (click)="onNoClick()">
+        Back
+    </button>
+    <button mat-raised-button color="primary" appearance="raised" (click)="onSaveClick()" [disabled]="!isValidForSave" >
+        Save
+    </button>
+</div>
