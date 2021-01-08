@@ -1,21 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <Version>3.1.1</Version>
-    <Authors>Rob Engel - LiveOrDevTrying</Authors>
-    <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
-    <Product>OAuthServer.NET</Product>
-    <Description>OAuthServer.NET is a simple yet scalable OAuth 2.0 provider for the 4 standard types of OAuth 2.0 as well as custom grants. OAuthServer.NET supports implicit, authorization code, resource owner password, and client credentials as well as 3rd party logins. OAuthServer.NET is integrated with the Asp.NET Identity system and includes the ability for full managemant of accounts. OAuthServer.NET includes a UI (created in Angular) for easily setting up and configuring clients. OAuthServer.NET is easily deployed through Docker, NuGet, or can be modified directly from the source https://github.com/liveordevtrying/oauthserver.net. OAuthServer.NET is dependent on SQL server, Entity Framework, and the Asp.NET Identity System.</Description>
-    <Copyright>Copyright 2021</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/liveordevtrying/oauthserver.net</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/liveordevtrying/oauthserver.net</RepositoryUrl>
-    <PackageIcon>Logo.png</PackageIcon>
-    <RepositoryType>GitHub Public</RepositoryType>
-    <PackageTags>OAuth OAuthServer OAuthServer.NET OAuth 2.0 Identity 3rd Party Authorization Authentication IdentityServer4 IdentityServer3 Provider tokens refresh access authorization authentication server liveordevtrying pixel horror studios pixelhorrorstudios</PackageTags>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,25 +10,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNet.Security.OAuth.Twitch" Version="3.1.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="3.1.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="3.1.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.10" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <PackageReference Include="AspNet.Security.OAuth.Twitch" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OAuthServer.NET.Core\OAuthServer.NET.Core.csproj" />
   </ItemGroup>
+  
 
 
 </Project>

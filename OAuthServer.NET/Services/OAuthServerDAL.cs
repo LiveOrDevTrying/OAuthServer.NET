@@ -29,10 +29,9 @@ namespace OAuthServer.NET.Services
             _signInManager = signInManager;
         }
 
-        public virtual Task MigrateDatabaseAsync()
+        public virtual async Task MigrateDatabaseAsync()
         {
-            _context.Database.Migrate();
-            return Task.CompletedTask;
+            await _context.Database.MigrateAsync();
         }
 
         // Identity
