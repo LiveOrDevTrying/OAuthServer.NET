@@ -23,7 +23,7 @@
 			<dependency id="Microsoft.AspNetCore.Authentication.Twitter" version="3.1.10" />
 			<dependency id="Microsoft.AspNetCore.Identity.UI" version="3.1.10" />
 			<dependency id="Microsoft.Extensions.Hosting.Abstractions" version="3.1.10" />
-			<dependency id="OAuthServer.NET.Core" version="1.0.1" />
+			<dependency id="OAuthServer.NET.Core" version="1.0.2" />
 		</group>
 	</dependencies>
   </metadata>

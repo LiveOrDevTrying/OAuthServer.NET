@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/liveordevtrying/oauthserver.net</RepositoryUrl>
     <RepositoryType>GitHub Public</RepositoryType>
     <PackageTags>OAuth OAuthServer OAuthServer.NET OAuth 2.0 Identity 3rd Party Authorization Authentication IdentityServer4 IdentityServer3 Provider tokens refresh access authorization authentication server liveordevtrying pixel horror studios pixelhorrorstudios</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
