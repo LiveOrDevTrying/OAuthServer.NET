@@ -126,7 +126,8 @@ namespace OAuthServer.NET.UI
         {
             return new MapperConfiguration(c =>
             {
-                c.CreateMap<Client, ClientDTO>();
+                c.CreateMap<Client, ClientDTO>()
+                    .ForMember(x => x.ClientSecret, o => o.MapFrom(t => t.ClientSecretDecoded));
                 c.CreateMap<Grant, GrantDTO>();
                 c.CreateMap<ClientCORSOrigin, ClientCORSOriginDTO>();
                 c.CreateMap<ClientPostLogoutRedirectURI, ClientPostLogoutRedirectURIDTO>();
