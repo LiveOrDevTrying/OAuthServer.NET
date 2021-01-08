@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.1" />
-    <PackageReference Include="OAuthServer.NET.Core" Version="1.0.1" />
+    <PackageReference Include="OAuthServer.NET.Core" Version="1.0.2" />
   </ItemGroup>
   
 
