@@ -18,7 +18,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.4" />
-    <PackageReference Include="OAuthServer.NET.Core" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,6 +39,10 @@
     <None Include="web.config" />
     <None Include="wwwroot\favicon.ico" />
     <None Include="wwwroot\favicon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OAuthServer.NET.Core\OAuthServer.NET.Core.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
