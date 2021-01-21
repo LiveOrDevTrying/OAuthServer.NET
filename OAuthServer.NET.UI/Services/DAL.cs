@@ -150,6 +150,7 @@ namespace OAuthServer.NET.UI.Services
         public virtual async Task<ClientDTO> CreateClientAsync(ClientImplicitCreateRequest request)
         {
             var issuerURI = WebUtility.HtmlEncode(request.IssuerURI);
+            var base64EncodedSecret = Convert.ToBase64String(Encoding.UTF8.GetBytes(request.SigningKey));
 
             var client = new Client
             {
@@ -158,13 +159,13 @@ namespace OAuthServer.NET.UI.Services
                 ValidateAudience = request.ValidateAudience,
                 ClientId = request.ClientId,
                 ClientName = request.ClientName,
-                ClientSecret = string.Empty,
+                ClientSecret = base64EncodedSecret,
                 EnabledLocalLogin = request.EnabledLocalLogin,
                 EnableExternalLogin = request.EnableExternalLogin,
                 IssueRefreshTokens = false,
                 IssuerURI = issuerURI,
                 RefreshTokenExpirationDays = 0,
-                ValidateIssuerSigningKey = false,
+                ValidateIssuerSigningKey = request.ValidateSigningKey,
                 TokenExpirationMin = request.TokenExpirationMin,
                 ValidateCORS = request.ValidateCORS,
                 GrantId = request.GrantId,
@@ -261,6 +262,7 @@ namespace OAuthServer.NET.UI.Services
         public virtual async Task<ClientDTO> UpdateClientAsync(ClientImplicitUpdateRequest request)
         {
             var issuerURI = WebUtility.HtmlEncode(request.IssuerURI);
+            var base64EncodedSecret = Convert.ToBase64String(Encoding.UTF8.GetBytes(request.SigningKey));
 
             var client = await _context.Clients
                 .FirstOrDefaultAsync(x => x.Id == request.Id);
@@ -272,13 +274,13 @@ namespace OAuthServer.NET.UI.Services
                 client.ValidateAudience = request.ValidateAudience;
                 client.ClientId = request.ClientId;
                 client.ClientName = request.ClientName;
-                client.ClientSecret = string.Empty;
+                client.ClientSecret = base64EncodedSecret;
                 client.EnabledLocalLogin = request.EnabledLocalLogin;
                 client.EnableExternalLogin = request.EnableExternalLogin;
                 client.IssueRefreshTokens = false;
                 client.IssuerURI = issuerURI;
                 client.RefreshTokenExpirationDays = 0;
-                client.ValidateIssuerSigningKey = false;
+                client.ValidateIssuerSigningKey = request.ValidateSigningKey;
                 client.TokenExpirationMin = request.TokenExpirationMin;
                 client.ValidateCORS = request.ValidateCORS;
                 client.GrantId = request.GrantId;
