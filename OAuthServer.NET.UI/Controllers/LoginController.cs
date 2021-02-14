@@ -39,11 +39,11 @@ namespace OAuthServer.NET.UI.Controllers
         {
             return new JWTParameters
             {
-                Audience = _configuration["Audience"],
+                Audience = Startup.AUDIENCE,
                 IPAddressIssuingToken = IpAddress,
-                IssuerURI = _configuration["Issuer"],
+                IssuerURI = Startup.ISSUER,
                 TokenExpirationMin = 60,
-                SigningKey = _configuration["SigningKey"],
+                SigningKey = Startup.SIGNING_KEY,
             };
         }
 
