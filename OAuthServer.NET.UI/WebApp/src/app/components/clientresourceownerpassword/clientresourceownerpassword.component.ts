@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { HttpService } from 'src/app';
 import { BaseIdComponent } from 'src/app/baseId.component';
 import { CacheService } from 'src/app/services/cache.service';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-clientresourceownerpassword',

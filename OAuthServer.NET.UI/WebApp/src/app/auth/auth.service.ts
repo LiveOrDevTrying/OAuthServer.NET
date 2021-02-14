@@ -6,30 +6,40 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class AuthService {
   private _authenticationChanged = new BehaviorSubject<boolean>(false);
-  
+  token: IToken;
+  tokenExpiration: Date;
+
   constructor() { }
 
   getToken(): string {
     if (!this.isAuthenticated()) {
       return '';
     }
-    
-    const json = JSON.parse(window.localStorage['token']);
-    return json.access_token;
+
+    if (!this.token) {
+      return '';
+    }
+
+    return this.token.access_token;
+    //const json = JSON.parse(window.localStorage['token']);
+    //return json.access_token;
   }
 
   setToken(token: IToken) {
-    window.localStorage['token'] = JSON.stringify(token);
+    this.token = token;
 
-    const tokenExpiration: Date = new Date();
-    tokenExpiration.setSeconds((new Date().getSeconds() + token.expires_in));
-    window.localStorage['expirationdate'] = tokenExpiration;
+    //window.localStorage['token'] = JSON.stringify(token);
+
+    this.tokenExpiration = new Date();
+    this.tokenExpiration.setSeconds((new Date().getSeconds() + token.expires_in));
+    //window.localStorage['expirationdate'] = tokenExpiration;
     this._authenticationChanged.next(this.isAuthenticated());
 
   }
 
   clearToken() {
-    window.localStorage['token'] = undefined;
+    this.token = undefined;
+    //window.localStorage['token'] = undefined;
     this._authenticationChanged.next(this.isAuthenticated());
   }
 
@@ -38,11 +48,19 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return (window.localStorage['token'] !== undefined &&
-      window.localStorage['token'] !== null &&
-      window.localStorage['token'] !== '' &&
-      window.localStorage['token'] !== 'undefined' &&
-      window.localStorage['token'] !== 'null' &&
-      Date.parse(window.localStorage['expirationdate']) > new Date().getSeconds());
+    if (this.token !== undefined) {
+      console.log(this.tokenExpiration);
+      console.log(new Date());
+      console.log(this.tokenExpiration > new Date());
+      //this.tokenExpiration.getSeconds() > new Date().getSeconds());
+      return true;
+    }
+
+    //return (window.localStorage['token'] !== undefined &&
+    //  window.localStorage['token'] !== null &&
+    //  window.localStorage['token'] !== '' &&
+    //  window.localStorage['token'] !== 'undefined' &&
+    //  window.localStorage['token'] !== 'null' &&
+    //  Date.parse(window.localStorage['expirationdate']) > new Date().getSeconds());
   }
 }
