@@ -54,11 +54,13 @@ interface IClientCreateRequest {
 
 interface IClientImplicitCreateRequest extends IClientCreateRequest {
     allowRememberLogin: boolean;
+    signingKey: string;
     enableLocalLogin: boolean;
     enableExternalLogin: boolean;
     validateIssuer: boolean;
     validateAudience: boolean;
     validateCORS: boolean;
+    validateSigningKey: boolean;
 }
 
 interface IClientImplicitUpdateRequest extends IClientImplicitCreateRequest {

@@ -31,6 +31,16 @@ namespace OAuthServer.NET
     {
         public static void StartOAuthServer(this IServiceCollection services, OAuthServerParams oauthServerParams)
         {
+            if (string.IsNullOrWhiteSpace(oauthServerParams.ConnectionString))
+            {
+                throw new AppException("Invalid connection string");
+            }
+
+            if (string.IsNullOrWhiteSpace(oauthServerParams.AdminPassword))
+            {
+                throw new AppException("Invalid admin password");
+            }
+
             services.AddSingleton(oauthServerParams);
 
             services.AddTransient<OAuthServerDAL>();

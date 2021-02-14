@@ -16,11 +16,18 @@ using OAuthServer.NET.Core.Models.Entities;
 using OAuthServer.NET.UI.Services;
 using System.Text;
 using JWTs;
+using OAuthServer.NET.Core.Models.Exceptions;
+using System;
+using System.Security.Cryptography;
 
 namespace OAuthServer.NET.UI
 {
     public class Startup
     {
+        public static string SIGNING_KEY { get; } = GetSigningKey();
+        public static string ISSUER { get; } = Guid.NewGuid().ToString();
+        public static string AUDIENCE { get; } = Guid.NewGuid().ToString();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +38,11 @@ namespace OAuthServer.NET.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (string.IsNullOrWhiteSpace(Configuration["ConnectionStrings:Database"]))
+            {
+                throw new AppException("Invalid connection string");
+            }
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:Database"]);
@@ -56,9 +68,9 @@ namespace OAuthServer.NET.UI
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = Configuration["Issuer"],
-                        ValidAudience = Configuration["Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SigningKey"]))
+                        ValidIssuer = ISSUER,
+                        ValidAudience = AUDIENCE,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SIGNING_KEY))
                     };
                 });
 
@@ -134,6 +146,15 @@ namespace OAuthServer.NET.UI
                 c.CreateMap<ClientRedirectURI, ClientRedirectURIDTO>();
                 c.CreateMap<ClientScope, ClientScopeDTO>();
             }).CreateMapper();
+        }
+        private static string GetSigningKey()
+        {
+            using var cryptoServiceProvider = new RNGCryptoServiceProvider();
+            var randomBytes = new byte[256];
+            cryptoServiceProvider.GetBytes(randomBytes);
+
+            // Convert random bytes to a hex string
+            return BitConverter.ToString(randomBytes).Replace("-", "");
         }
     }
 }

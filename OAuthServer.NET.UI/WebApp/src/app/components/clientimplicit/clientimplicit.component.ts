@@ -15,12 +15,14 @@ export class ClientimplicitComponent extends BaseIdComponent {
   grantId: string;
   clientName: string;
   clientId: string;
+  signingKey: string;
   tokenExpirationMin: number;
   issuerURI: string;
   audience: string;
   allowRememberLogin: boolean = true;
   enableExternalLogin: boolean = true;
   enableLocalLogin: boolean = true;
+  validateSigningKey: boolean = true;
   validateIssuer: boolean = true;
   validateAudience: boolean = true
   validateCORS: boolean = true;
@@ -58,6 +60,8 @@ export class ClientimplicitComponent extends BaseIdComponent {
       this.validateIssuer = client.validateIssuer;
       this.validateAudience = client.validateAudience;
       this.validateCORS = client.validateCORS;
+      this.validateSigningKey = client.validateIssuerSigningKey;
+      this.signingKey = client.clientSecret;
     }
   }
 
@@ -72,6 +76,8 @@ export class ClientimplicitComponent extends BaseIdComponent {
         validateAudience: this.validateAudience,
         validateCORS: this.validateCORS,
         validateIssuer: this.validateIssuer,
+        validateSigningKey: this.validateSigningKey,
+        signingKey: this.signingKey,
         clientId: this.clientId,
         clientName: this.clientName,
         grantId: this.grantId,
@@ -96,7 +102,9 @@ export class ClientimplicitComponent extends BaseIdComponent {
         grantId: this.grantId,
         tokenExpirationMin: this.tokenExpirationMin,
         issuerURI: this.issuerURI,
-        audience: this.audience
+        audience: this.audience,
+        validateSigningKey: this.validateSigningKey,
+        signingKey: this.signingKey
       }
 
       this.http.createClientImplicit(request);
