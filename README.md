@@ -105,6 +105,7 @@ oauthserver.net:
 ```
 
 ### **Environmental Variables**:
+
 #### **Required**
 * ConnectionStrings__Database - *string* - **Required**
   * The connection string to your SQL server database. This should be the exact same connection string used in OAuthServer.NET.
