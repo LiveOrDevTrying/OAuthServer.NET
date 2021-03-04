@@ -45,6 +45,7 @@ The following  tags are available for OAuthServer.NET on DockerHub:
 If additional tags / platforms are required, please post them as an issue at [the public git repository] for this project or send an email to liveordevtrying@gmail.com and new tags will be added promptly.
 
 ### **Environmental Variables**:
+
 #### **Required**
 * ConnectionStrings__Database - *string* - **Required**
   * The connection string to your SQL server database. Other databases may work (such as MySql, Postgres, etc) if an appropriate connection string is provided. However, OAuthServer.NET is written primarily for a MS SQL Server database.
