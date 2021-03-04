@@ -6,7 +6,7 @@
     <ApplicationIcon>Logo.ico</ApplicationIcon>
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
     <Description>OAuthServer.NET is a simple yet scalable OAuth 2.0 provider for the 4 standard types of OAuth 2.0 as well as custom grants. OAuthServer.NET supports implicit, authorization code, resource owner password, and client credentials as well as 3rd party logins. OAuthServer.NET is integrated with the Asp.NET Identity system and includes the ability for full managemant of accounts. OAuthServer.NET includes a UI (created in Angular) for easily setting up and configuring clients. OAuthServer.NET is easily deployed through Docker, NuGet, or can be modified directly from the source https://github.com/liveordevtrying/oauthserver.net. OAuthServer.NET is dependent on SQL server, Entity Framework, and the Asp.NET Identity System.</Description>
-    <Version>3.1.2</Version>
+    <Version>3.1.8</Version>
     <Copyright>Copyright 2021</Copyright>
     <PackageTags>OAuth OAuthServer OAuthServer.NET OAuth 2.0 Identity 3rd Party Authorization Authentication IdentityServer4 IdentityServer3 Provider tokens refresh access authorization authentication server liveordevtrying pixel horror studios pixelhorrorstudios</PackageTags>
     <RepositoryUrl>https://github.com/liveordevtrying/oauthserver.net</RepositoryUrl>
