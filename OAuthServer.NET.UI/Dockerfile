@@ -5,9 +5,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0.1-buster-slim-arm32v7 AS base
 WORKDIR /app
 EXPOSE 80
 
-RUN apt-get update && \
-    apt-get upgrade -y
-
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["OAuthServer.NET.UI/OAuthServer.NET.UI.csproj", "OAuthServer.NET.UI/"]
