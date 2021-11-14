@@ -2,17 +2,16 @@
 FROM node:latest AS node_base
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0.1-buster-slim AS base
-COPY --from=node_base . .
 WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
-COPY --from=node_base . .
 WORKDIR /src
 COPY ["OAuthServer.NET.UI/OAuthServer.NET.UI.csproj", "OAuthServer.NET.UI/"]
 RUN dotnet restore "OAuthServer.NET.UI/OAuthServer.NET.UI.csproj"
 COPY . .
 WORKDIR "/src/OAuthServer.NET.UI"
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN dotnet build "OAuthServer.NET.UI.csproj" -c Release -o /app/build
 
 FROM build AS publish
